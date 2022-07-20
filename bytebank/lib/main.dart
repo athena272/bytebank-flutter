@@ -112,7 +112,8 @@ class ListaLubankState extends State<ListaLubank> {
   @override
   Widget build(BuildContext context) {
     //Inicializar uma transferencia
-    // widget.transferencias.add(Transferencia(valor: 100.0, numeroConta: 1000));
+    widget.transferencias.add(Transferencia(valor: 100.0, numeroConta: 1000));
+    widget.transferencias.add(Transferencia(valor: 200.0, numeroConta: 2000));
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
