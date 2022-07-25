@@ -16,7 +16,15 @@ class ByteBankApp extends StatelessWidget {
   }
 }
 
-class FormularioLubank extends StatelessWidget {
+class FormularioLubank extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return FormularioLubankState();
+  }
+}
+
+class FormularioLubankState extends State<FormularioLubank> {
   final TextEditingController _numContaController = TextEditingController();
   final TextEditingController _valorContaController = TextEditingController();
 
@@ -112,8 +120,7 @@ class ListaLubankState extends State<ListaLubank> {
   @override
   Widget build(BuildContext context) {
     //Inicializar uma transferencia
-    widget.transferencias.add(Transferencia(valor: 100.0, numeroConta: 1000));
-    widget.transferencias.add(Transferencia(valor: 200.0, numeroConta: 2000));
+    // widget.transferencias.add(Transferencia(valor: 100.0, numeroConta: 1000));
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
@@ -140,6 +147,9 @@ class ListaLubankState extends State<ListaLubank> {
               debugPrint("Chegou no then do Future");
               debugPrint('$trasnferenciaRecebida');
               widget.transferencias.add(trasnferenciaRecebida!);
+              setState(() {
+                print("Atualizando a tela!");
+              });
             },
           );
         },
