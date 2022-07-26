@@ -9,9 +9,18 @@ class ByteBankApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return MaterialApp(
-      home: Scaffold(
-        body: ListaLubank(),
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSwatch(
+          primarySwatch: Colors.purple,    
+        ).copyWith(
+          secondary: Colors.blue,
+        ),
+        buttonTheme: ButtonThemeData(
+          buttonColor: Colors.blueAccent[700],
+          textTheme: ButtonTextTheme.primary,
+        ),
       ),
+      home: ListaLubank(),
     );
   }
 }
@@ -144,12 +153,17 @@ class ListaLubankState extends State<ListaLubank> {
           );
           future.then(
             (trasnferenciaRecebida) {
-              debugPrint("Chegou no then do Future");
-              debugPrint('$trasnferenciaRecebida');
-              widget.transferencias.add(trasnferenciaRecebida!);
-              setState(() {
-                print("Atualizando a tela!");
-              });
+              Future.delayed(
+                Duration(seconds: 1),
+                () {
+                  debugPrint("Chegou no then do Future");
+                  debugPrint('$trasnferenciaRecebida');
+                  setState(() {
+                    widget.transferencias.add(trasnferenciaRecebida!);
+                    print("Atualizando a tela! Adicionando transferencia");
+                  });
+                },
+              );
             },
           );
         },
